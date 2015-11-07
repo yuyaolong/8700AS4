@@ -1,0 +1,180 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation. 
+     So make sure to include your name as part of the screenTitle -->
+<screenTitle>yaolony's Sprite Animation</screenTitle>
+<maxStringSize>50</maxStringSize>
+
+<frameCap>60</frameCap>
+<framesAreCapped>true</framesAreCapped>
+<frameMax>300</frameMax>
+<username>yaolony</username>
+
+<view>
+  <width>854</width>
+  <height>480</height>
+</view>
+
+<world>
+  <width>4000</width>
+  <height>720</height>
+</world>
+
+<clock>
+  <locX>10</locX>
+  <locY>10</locY>
+</clock>
+
+<spritesKinds>4</spritesKinds>
+
+<back1>
+  <file>images/spaceBack1.png</file>
+  <factor>7</factor>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>1280</width>
+  <height>720</height>
+  <transparency>false</transparency>
+</back1>
+
+<back2>
+    <file>images/spaceBack2.png</file>
+    <factor>6</factor>
+    <srcX>0</srcX>
+    <srcY>0</srcY>
+    <width>4000</width>
+    <height>720</height>
+    <transparency>false</transparency>
+</back2>
+
+<back3>
+    <file>images/spaceBack3.png</file>
+    <factor>4</factor>
+    <srcX>0</srcX>
+    <srcY>0</srcY>
+    <width>1280</width>
+    <height>720</height>
+    <transparency>false</transparency>
+</back3>
+
+<back4>
+    <file>images/spaceBack4.png</file>
+    <factor>3</factor>
+    <srcX>0</srcX>
+    <srcY>0</srcY>
+    <width>1280</width>
+    <height>720</height>
+    <transparency>false</transparency>
+</back4>
+
+
+<font name="font">
+  <file>font/dyslexic-bold.otf</file>
+  <size>16</size>
+  <red>255</red>
+  <green>255</green>
+  <blue>255</blue>
+  <unused>0</unused>
+</font>
+
+<spinstar>
+  <file>images/spinstar.png</file>
+  <startLoc x="120" y="140"/>
+
+  <frames>4</frames>
+  <frameInterval>20</frameInterval>
+
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>32</width>
+  <height>32</height>
+  <speedX>-200</speedX>
+  <speedY>200</speedY>
+  <transparency>true</transparency>
+</spinstar>
+
+
+<Gundam>
+  <file>images/Gundam.bmp</file>
+  <startLoc x="0" y="300"/>
+  <frames>5</frames>
+  <frameInterval>500</frameInterval>
+
+
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>200</width>
+  <height>87</height>
+  <speedX>500</speedX>
+  <speedY>300</speedY>
+  <transparency>true</transparency>
+</Gundam>
+
+<Enemy>
+  <file>images/Enemy.png</file>
+  <startLoc x="0" y="0"/>
+  <scale min="0.5" max="1.1"/>
+  <number>20</number>
+  <frames>9</frames>
+  <frameInterval>200</frameInterval>
+
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>100</width>
+  <height>87</height>
+  <speedX>-200</speedX>
+  <speedY>200</speedY>
+  <transparency>true</transparency>
+</Enemy>
+
+<Explotion>
+    <file>images/Explotion.png</file>
+    <startLoc x="0" y="0"/>
+    <number>30</number>
+    <frames>14</frames>
+    <frameInterval>100</frameInterval>
+    
+    <srcX>0</srcX>
+    <srcY>0</srcY>
+    <width>40</width>
+    <height>40</height>
+    <speedX>0</speedX>
+    <speedY>0</speedY>
+    <transparency>true</transparency>
+</Explotion>
+
+
+<Vessel1>
+  <file>images/Vessel1.png</file>
+  <number>5</number>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>359</width>
+  <height>200</height>
+  <startLoc x="320" y="240"/>
+  <speedX>20</speedX>
+  <speedY>0</speedY>
+  <transparency>true</transparency>
+</Vessel1>
+
+
+<hud>
+    <x>7</x>
+    <y>15</y>
+    <length>260</length>
+    <width>180</width>
+    <thick>2</thick>
+</hud>
+
+<health>
+    <x>10</x>
+    <y>460</y>
+    <length>200</length>
+    <width>140</width>
+    <thick>14</thick>
+    <increment>20</increment>
+    <interval>1000</interval>
+    <color>red</color>
+</health>
+
+</GameData>

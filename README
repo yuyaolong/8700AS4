@@ -1,0 +1,42 @@
+Name: Yaolong Yu
+Clemson Email Address: yaolony@g.clemson.edu
+
+Project no: 4
+Project due date:10/22/2015
+
+Project description:
+I have 4 kinds of sprites: Gundam(two-way sprite), Enemy(two-way sprite), Vessel(sprite), explotion(mutisprite)
+I use every 200 tickets to claculate the fps.
+I use SDL_Delay to implement Cap 60Fps
+I have done every items on the checklist.
+I valgrind my code and find no memory leak from my code
+I add <number> for every sprite in XML
+Slow model key is 's'
+
+
+
+How you made your sprites:
+
+I find sprites image from website, I use GIMP to process them.
+
+Gundam: https://galaxyanimasi.wordpress.com/gallery/galery-photo-kegiatan/gambar-animasi/
+
+Enemy: http://s91.photobucket.com/user/GAT-X303X/media/gyanChar.gif.html
+
+Vessel: https://www.rpnation.com/threads/empires-at-war.150532/
+
+background: http://7-themes.com/6917537-space-wallpaper-hd-17147.html
+
+explotion: http://www.codeproject.com/KB/directx/SpaceWarriorPartII/TheExplosion.png
+
+
+
+
+
+
+
+
+
+
+
+
