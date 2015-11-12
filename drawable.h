@@ -11,11 +11,11 @@
 // and must have.
 class Drawable {
 public:
-  Drawable(const std::string& n, const Vector2f& pos, const Vector2f& vel): 
-    name(n), position(pos), velocity(vel) {}
+  Drawable(const std::string& n, const Vector2f& pos, const Vector2f& vel, double sca=1):
+    name(n), position(pos), velocity(vel),scale(sca) {}
 
   Drawable(const Drawable& s) : 
-    name(s.name), position(s.position), velocity(s.velocity)
+    name(s.name), position(s.position), velocity(s.velocity), scale(s.scale)
     { }
 
   virtual ~Drawable() {}
@@ -39,6 +39,9 @@ public:
   float velocityY() const  { return velocity[1]; }
   void velocityY(float vy) { velocity[1] = vy;   }
 
+    void setScale(double s){ scale = s;}
+    double getScale() const{ return scale;};
+    
   const Vector2f& getVelocity() const   { return velocity; }
   void setVelocity(const Vector2f& vel) { velocity = vel;  }
   const Vector2f& getPosition() const   { return position; }
@@ -52,5 +55,14 @@ private:
   std::string name;
   Vector2f position;
   Vector2f velocity;
+  double scale;
+};
+
+
+class SpriteCompareLess{
+public:
+    bool operator()(Drawable* lhs, Drawable* rhs ) {
+        return lhs->getScale() < rhs->getScale();
+    }
 };
 #endif

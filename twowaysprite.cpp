@@ -34,8 +34,8 @@ flipY(1)
 { }
 
 
-TwoWaySprite::TwoWaySprite( const std::string& name, int Px, int Py, int Vx, int Vy) :
-    Drawable(name, Vector2f(Px, Py), Vector2f(Vx, Vy)),
+TwoWaySprite::TwoWaySprite( const std::string& name, int Px, int Py, int Vx, int Vy, double scale) :
+    Drawable(name, Vector2f(Px, Py), Vector2f(Vx, Vy),scale),
   frames( FrameFactory::getInstance().getFrames(name) ),
   worldWidth(Gamedata::getInstance().getXmlInt("world/width")),
   worldHeight(Gamedata::getInstance().getXmlInt("world/height")),

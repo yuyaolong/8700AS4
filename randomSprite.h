@@ -12,9 +12,9 @@
 #include "sprite.h"
 
 
-class Vessel : public Sprite {
+class RandomSprite : public Sprite {
 public:
-    Vessel(const std::string& name);
+    RandomSprite(const std::string& name);
 };
 
 

@@ -59,7 +59,7 @@
 
 <back4>
     <file>images/spaceBack4.png</file>
-    <factor>3</factor>
+    <factor>2</factor>
     <srcX>0</srcX>
     <srcY>0</srcY>
     <width>1280</width>
@@ -130,6 +130,7 @@
 <Explotion>
     <file>images/Explotion.png</file>
     <startLoc x="0" y="0"/>
+    <scale min="0.5" max="1.1"/>
     <number>30</number>
     <frames>14</frames>
     <frameInterval>100</frameInterval>
@@ -147,6 +148,7 @@
 <Vessel1>
   <file>images/Vessel1.png</file>
   <number>5</number>
+  <scale min="0.5" max="1.1"/>
   <srcX>0</srcX>
   <srcY>0</srcY>
   <width>359</width>

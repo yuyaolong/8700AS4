@@ -28,9 +28,8 @@ private:
   Viewport& viewport;
 
   std::vector<World*> worlds;
-  std::list<Drawable*> sprites;
-  std::list<Drawable*>::iterator currentSprite;
-  std::vector<Scaledsprite *>enemys;
+  std::vector<Drawable*> sprites;
+  std::vector<Drawable*>::iterator currentSprite;
 
     
   bool makeVideo;

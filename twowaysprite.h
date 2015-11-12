@@ -8,7 +8,7 @@ class TwoWaySprite : public Drawable {
 public:
 
   TwoWaySprite(const std::string&);
-    TwoWaySprite(const std::string&, int Px, int Py, int Vx, int Vy);
+    TwoWaySprite(const std::string&, int Px, int Py, int Vx, int Vy, double scale=1);
     
     
   virtual ~TwoWaySprite() { } 

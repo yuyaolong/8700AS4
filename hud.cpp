@@ -40,10 +40,13 @@ void Hud::draw() const {
     drawBox();
     io.printMessageValueAt("Seconds: ", Clock::getInstance().getSeconds(), 10, 20);
     io.printMessageValueAt("fps: ", Clock::getInstance().getFps(), 10, 40);
-    io.printMessageAt("left arrow - move left", 10, 60);
-    io.printMessageAt("right arrow - move right", 10, 80);
-    io.printMessageAt("down arrow - move down", 10, 100);
-    io.printMessageAt("up arrow - move up", 10, 120);
+    io.printMessageAt("D - move left", 10, 60);
+    io.printMessageAt("A - move right", 10, 80);
+    io.printMessageAt("S - move down", 10, 100);
+    io.printMessageAt("W - move up", 10, 120);
+    io.printMessageAt("l - slow; p - pasue", 10, 140);
+    io.printMessageAt("you can press both buttons", 10, 160);
+    
     //io.printMessageAt("r - restart game", 10, 140);
     //io.printMessageAt("SPACE - throw acorn", 10, 160);
     io.printMessageAt("Press T to switch sprites", 10, 180);

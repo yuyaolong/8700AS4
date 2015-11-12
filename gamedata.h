@@ -10,6 +10,10 @@ enum PlayerStatus {
     MOVERIGHT,
     MOVEUP,
     MOVEDOWN,
+    UPRIGHT,
+    UPLEFT,
+    DOWNRIGHT,
+    DOWNLEFT,
     STAND,
     FIRE
 };

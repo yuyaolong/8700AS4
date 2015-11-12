@@ -2,16 +2,25 @@ Name: Yaolong Yu
 Clemson Email Address: yaolony@g.clemson.edu
 
 Project no: 4
-Project due date:10/22/2015
+Project due date:11/13/2015
 
 Project description:
-I have 4 kinds of sprites: Gundam(two-way sprite), Enemy(two-way sprite), Vessel(sprite), explotion(mutisprite)
-I use every 200 tickets to claculate the fps.
-I use SDL_Delay to implement Cap 60Fps
+
 I have done every items on the checklist.
-I valgrind my code and find no memory leak from my code
-I add <number> for every sprite in XML
-Slow model key is 's'
+
+I use sort for painter's algorithm
+
+For the final game:
+(1) action: move up left down right and diagonal direction.
+(2) blank to shoot bullet, eliminate enemy "zaku" and vessel.
+(3) It will have a boss, a evil gundam.
+(4) special weapon is laser ray, it can eliminate a lot of enemies.
+(5) eliminate "Zaku" get 10 points, eliminate vessel give 30 points and special weapon.
+(6) hit by enemies will reduce health.
+(7) kill boss win.
+(8) I will redesign the motion and weapon animation sheets to make them looks good
+(9) maybe I will add more features depents on how far I can get
+
 
 
 

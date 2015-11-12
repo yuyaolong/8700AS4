@@ -5,14 +5,12 @@
 #include "gamedata.h"
 #include "manager.h"
 #include "twowaysprite.h"
-#include "vessel.h"
-#include "explotion.h"
+#include "randomSprite.h"
 
 
 Manager::~Manager() { 
-  std::list<Drawable*>::const_iterator ptr = sprites.begin();
+  std::vector<Drawable*>::const_iterator ptr = sprites.begin();
     std::vector<World*>::const_iterator wPtr = worlds.begin();
-    std::vector<Scaledsprite *>::const_iterator ePtr = enemys.begin();
   while ( ptr != sprites.end() ) {
     delete (*ptr);
     ++ptr;
@@ -21,10 +19,7 @@ Manager::~Manager() {
         delete (*wPtr);
         ++wPtr;
     }
-    while (ePtr != enemys.end() ) {
-        delete (*ePtr);
-        ++ePtr;
-    }
+
 }
 
 Manager::Manager() :
@@ -36,13 +31,13 @@ Manager::Manager() :
     worlds(),
   sprites(),
   currentSprite(),
-  enemys(),
   makeVideo( false ),
   frameCount( 0 ),
   username(  Gamedata::getInstance().getXmlStr("username") ),
   title( Gamedata::getInstance().getXmlStr("screenTitle") ),
   frameMax( Gamedata::getInstance().getXmlInt("frameMax") ),
     eachSpritsNumbe(),
+    gundam(),
     hud("hud"),
     health("health")
 {
@@ -58,38 +53,39 @@ Manager::Manager() :
     worlds.push_back(new World("back3"));
     worlds.push_back(new World("back4"));
     std::sort(worlds.begin(), worlds.end(), FactorCompare());
-        eachSpritsNumbe.push_back(Gamedata::getInstance().getXmlInt("Enemy/number"));
+    eachSpritsNumbe.push_back(1);
+    eachSpritsNumbe.push_back(Gamedata::getInstance().getXmlInt("Enemy/number"));
     eachSpritsNumbe.push_back(Gamedata::getInstance().getXmlInt("Vessel1/number"));
     eachSpritsNumbe.push_back(Gamedata::getInstance().getXmlInt("Explotion/number"));
-  	
+
     
-        gundam = new Player("Gundam");
-        gundam -> setStatus(STAND);
-        sprites.push_back(gundam);
-        
+    gundam = new Player("Gundam");
+    gundam -> setStatus(STAND);
     
     
-    enemys.reserve(eachSpritsNumbe[0]);
-    for (int i = 0; i< eachSpritsNumbe[0]; i++) {
-        enemys.push_back( new Scaledsprite("Enemy"));
-    }
-    std::sort(enemys.begin(),enemys.end(),SpriteCompareLess());
-    std::cout<<"Painter scaled sprites\n";
-    for (int i = 0; i< eachSpritsNumbe[0]; i++) {
-        std::cout<<enemys[i]->getScale()<<"\n";
+    for (int i = 0; i< eachSpritsNumbe[1]; i++) {
+        sprites.push_back( new Scaledsprite("Enemy"));
     }
   
-    for (int i=0; i< eachSpritsNumbe[1]; i++) {
-        sprites.push_back( new Vessel("Vessel1") );
+    for (int i=0; i< eachSpritsNumbe[2]; i++) {
+        sprites.push_back( new RandomSprite("Vessel1") );
     }
     
 
-    for (int i=0; i< eachSpritsNumbe[2]; i++) {
-        sprites.push_back( new Explotion("Explotion") );
+    for (int i=0; i< eachSpritsNumbe[3]; i++) {
+        sprites.push_back( new Scaledsprite("Explotion") );
     }
+    
+    std::sort(sprites.begin(), sprites.end()-1,SpriteCompareLess());
 
+    std::cout<<"painter sort \n";
+    for (unsigned int i = 0; i< sprites.size()-1; i++ ) {
+        std::cout<<sprites[i]->getScale()<<"\n";
+    }
+    
+    sprites.push_back(gundam);
     currentSprite = sprites.begin();
-    viewport.setObjectToTrack(*currentSprite);
+    viewport.setObjectToTrack(*(sprites.end()-1));
 }
 
 
@@ -100,11 +96,8 @@ void Manager::draw() const {
     for (unsigned int i=0; i<worlds.size(); i++) {
         worlds[i]->draw();
     }
-    for (unsigned int i=0; i<enemys.size(); i++) {
-        enemys[i]->draw();
-    }
   clock.draw();
-  std::list<Drawable*>::const_iterator ptr = sprites.begin();
+  std::vector<Drawable*>::const_iterator ptr = sprites.begin();
   while ( ptr != sprites.end() ) {
     (*ptr)->draw();
     ++ptr;
@@ -132,7 +125,7 @@ void Manager::draw() const {
 void Manager::switchSprite() {
     static int whichKindSprite = 0;
     whichKindSprite++;
-    for (int k=0; k<eachSpritsNumbe[whichKindSprite%(Gamedata::getInstance().getXmlInt("spritesKinds"))]; ++k) {
+    for (int k=0; k<eachSpritsNumbe[whichKindSprite%(eachSpritsNumbe.size())]; ++k) {
          currentSprite++;
     }
  
@@ -145,10 +138,7 @@ void Manager::switchSprite() {
 void Manager::update() {
   clock.update();
   Uint32 ticks = clock.getTicksSinceLastFrame();
-    for (unsigned int i=0; i<enemys.size(); i++) {
-        enemys[i]->update(ticks);
-    }
-  std::list<Drawable*>::const_iterator ptr = sprites.begin();
+  std::vector<Drawable*>::const_iterator ptr = sprites.begin();
   while ( ptr != sprites.end() ) {
     (*ptr)->update(ticks);
     ++ptr;
@@ -190,7 +180,7 @@ void Manager::play() {
           if ( clock.isPaused() ) clock.unpause();
           else clock.pause();
         }
-        if (keystate[SDLK_s]) {
+        if (keystate[SDLK_l]) {
           clock.toggleSloMo();
         }
         if (keystate[SDLK_F4] && !makeVideo) {
@@ -203,32 +193,47 @@ void Manager::play() {
           
       }
         
-        if(keystate[SDLK_LEFT])
+        if(keystate[SDLK_a])
         {
             gundam->setStatus(MOVELEFT);
             
         }
-        if(keystate[SDLK_RIGHT])
+        if(keystate[SDLK_d])
         {
             gundam->setStatus(MOVERIGHT);
         }
-        if(keystate[SDLK_DOWN])
+        if(keystate[SDLK_s])
         {
             gundam->setStatus(MOVEDOWN);
         }
-        if(keystate[SDLK_UP])
+        if(keystate[SDLK_w])
         {
             gundam->setStatus(MOVEUP);
         }
         
-        if(keystate[SDLK_RIGHT] && keystate[SDLK_LEFT])
+        if (keystate[SDLK_w] && keystate[SDLK_d]) {
+            gundam->setStatus(UPRIGHT);
+        }
+        if (keystate[SDLK_w] && keystate[SDLK_a]) {
+            gundam->setStatus(UPLEFT);
+        }
+        if (keystate[SDLK_s] && keystate[SDLK_d]) {
+            gundam->setStatus(DOWNRIGHT);
+        }
+        if (keystate[SDLK_s] && keystate[SDLK_a]) {
+            gundam->setStatus(DOWNLEFT);
+        }
+        
+        if(keystate[SDLK_a] && keystate[SDLK_d])
         {
             gundam->setStatus(STAND);
         }
-        if(keystate[SDLK_UP] && keystate[SDLK_DOWN])
+        if(keystate[SDLK_w] && keystate[SDLK_s])
         {
             gundam->setStatus(STAND);
         }
+        
+        
 
     }
 

@@ -15,18 +15,10 @@ class Scaledsprite:public TwoWaySprite{
 public:
     Scaledsprite(const std::string& name);
     virtual void draw() const;
-    double getScale(){return scale;}
     
 private:
-    double scale;
 };
 
 
-class SpriteCompareLess{
-public:
-    bool operator()(Scaledsprite* lhs, Scaledsprite* rhs ) {
-        return lhs->getScale() < rhs->getScale();
-    }
-};
 
 #endif 
